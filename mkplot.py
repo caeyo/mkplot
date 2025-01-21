@@ -235,14 +235,8 @@ def usage():
     print('                                        Available values: [0 .. INT_MAX] (default = 0)')
 
 
-#
-#==============================================================================
-if __name__ == '__main__':
-    options, fns = parse_options()
 
-    if not fns:
-        pass  # error handling
-
+def main(options, fns):
     data = load_data(fns, options)
 
     if options['dry_run']:
@@ -261,3 +255,15 @@ if __name__ == '__main__':
             plotter = Scatter(options)
 
         plotter.create(data)
+
+
+#
+#==============================================================================
+if __name__ == '__main__':
+    options, fns = parse_options()
+
+    if not fns:
+        pass  # error handling
+    main(options, fns)
+
+
